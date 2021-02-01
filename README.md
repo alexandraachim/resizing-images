@@ -13,7 +13,7 @@ _git clone git@github.com:alexandraachim/resizing-images.git_
 
 _
 
-    npm install
+    cd resizing-images && npm install
 
 _
 
@@ -23,11 +23,11 @@ _
 
     npm run start:dev
 _
-
+Use Postman for:
 Upload your first image:
     1. Open Postman:
     2. POST to : http://localhost:3000/task
-    3. Chose body - form-data - file (file) and Select files
+    3. Chose body - form-data - file (file) and Select files. (You have some example in input folder in this project)
     Send Request.
 
 Get data:
@@ -56,14 +56,14 @@ _
 
 _
 
-    NodeJS
-    Express
+    NodeJS: Node.js is a platform built on Chrome's JavaScript runtime for easily building fast and scalable network applications.
+    Express: Node.js framework
     Multer: is a node.js middleware for handling multipart/form-data , which is primarily used for uploading files.
     Sharp: is a high-performace image processing library for node.js
-    Crypto
+    Crypto: a core module for node.js to encrypt
     fs
-    Jest
-    Supertest
+    Jest: testing
+    Supertest: testing
 _
 
 

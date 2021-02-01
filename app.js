@@ -1,10 +1,9 @@
 const multer = require('multer');
 const express = require('express');
-
 const fs = require('fs');
-const resizingImage = require('./helpers/resize')
+const resizingImage = require('./helpers/resize');
 const root = process.cwd();
-const imputDir = `${root}/input`
+const imputDir = `${root}/input`;
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
