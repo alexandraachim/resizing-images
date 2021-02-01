@@ -35,7 +35,7 @@ const getApp = () => {
         resizingImage(800, file, tasks);
         resizingImage(1024, file, tasks);
      
-        res.status(200).send('Image saved!');
+        res.status(200).send(file);
     });
     
     

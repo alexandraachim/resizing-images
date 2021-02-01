@@ -33,29 +33,21 @@ const resizingImage = async (width, file, tasks) => {
     const modifiedImage = await sharp(path)
         .resize(width)
         .toFile(`${dir}/${newName}.jpg`);
-    
 
-    const newId = Object.keys(tasks.images).length + 1;
-    let status;
-    const array = tasks.images
-    const task = array.filter(elem => elem.id === newId - 1)
-    if(task) {
-        status = 'completed'
-    } else {
-        status = 'pending'
-    }
+    const newId = tasks.images.length + 1;
+
 
     const info = {
         'id': newId,
         'newName': newName,
-        'path': path,
-        'date': date,
+        'inputPath': path,
+        'timestamp': date,
         'original': originalImage,
         'outputPath': dir,
         'modified': modifiedImage,
-        'status': status
+        'status': 'completed'
     };
-     
+     console.log({info});
     tasks.images = [...tasks.images, info]
      
     await fs.writeFile('./tasks/taskprocess.json', JSON.stringify(tasks), (err)=>{
@@ -63,6 +55,7 @@ const resizingImage = async (width, file, tasks) => {
             return err
         }
     })
+    return info;
 } 
 
 module.exports = resizingImage;
