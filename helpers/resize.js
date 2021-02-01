@@ -6,16 +6,28 @@ const sharp = require('sharp');
 const date = new Date()
 
 const resizingImage = async (width, file, tasks) => {
+
+    const dirOutput = `${process.cwd()}/output`;
+    if (!fs.existsSync(dirOutput)){
+        fs.mkdirSync(dirOutput, {recursive: true});   
+    }
+
+    const dirOriginals = `${dirOutput}/originals`;
+    if (!fs.existsSync(dirOriginals)){
+        fs.mkdirSync(dirOriginals, {recursive: true});   
+    }
    
     const path = file.path;
     const originalName = file.originalname;
     const newName = crypto.createHash('md5').update(originalName).digest('hex');
     const folderName = originalName.split('.')[0];
+    console.log(process.cwd());
+   
 
     const originalImage = await sharp(path)
-        .toFile(`./output/originals/${originalName}`);
-        
-    const dir = `./output/${folderName}/${width}`;
+        .toFile(`${dirOriginals}/${originalName}`);
+
+    const dir = `${dirOutput}/${folderName}/${width}`;
     if (!fs.existsSync(dir)){
         fs.mkdirSync(dir, {recursive: true});   
     }

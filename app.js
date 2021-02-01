@@ -3,19 +3,25 @@ const express = require('express');
 
 const fs = require('fs');
 const resizingImage = require('./helpers/resize')
+const root = process.cwd()
+console.log({root});
+const imputDir = `${root}/input`
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
 
-        cb(null, `./output`)
+        cb(null, imputDir)
     },
-    filename: function (req, file, cb) {
+    filename: function (req, file, cb){
+        const timestamp = Date.now();
+        let type = ''
         if (file.mimetype === "image/jpeg") {
             type = "jpg";
         }
-        cb(null, 'image')
+        cb(null, 'image-' + timestamp + type)
     }
 })
+
 const upload = multer({ storage: storage });
 
 const tasks = JSON.parse(fs.readFileSync('./tasks/taskprocess.json', 'utf-8'));
@@ -23,6 +29,8 @@ const tasks = JSON.parse(fs.readFileSync('./tasks/taskprocess.json', 'utf-8'));
 const getApp = () => {
     const app = express();
     app.post('/task', upload.single('file'), async (req, res) => {
+        
+        console.log(req.file);  
 
         if(!req.file) {
            return res.status(404).send('Image not found!')
