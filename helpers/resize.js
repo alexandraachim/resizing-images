@@ -35,6 +35,13 @@ const resizingImage = async (width, file, tasks) => {
         .toFile(`${dir}/${newName}.jpg`);
 
     const newId = tasks.images.length + 1;
+    let status;
+    const task = tasks.images.filter(elem => elem.id === newId - 1)
+    if(task) {
+        status = 'completed'
+    } else {
+        status = 'pending'
+    }
 
     const info = {
         'id': newId,
@@ -44,7 +51,7 @@ const resizingImage = async (width, file, tasks) => {
         'original': originalImage,
         'outputPath': dir,
         'modified': modifiedImage,
-        'status': 'completed'
+        'status': status
     };
      console.log({info});
     tasks.images = [...tasks.images, info]
