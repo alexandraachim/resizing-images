@@ -36,7 +36,6 @@ const resizingImage = async (width, file, tasks) => {
 
     const newId = tasks.images.length + 1;
 
-
     const info = {
         'id': newId,
         'newName': newName,
