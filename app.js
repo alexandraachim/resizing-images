@@ -3,8 +3,7 @@ const express = require('express');
 
 const fs = require('fs');
 const resizingImage = require('./helpers/resize')
-const root = process.cwd()
-console.log({root});
+const root = process.cwd();
 const imputDir = `${root}/input`
 
 const storage = multer.diskStorage({
@@ -30,8 +29,6 @@ const getApp = () => {
     const app = express();
     app.post('/task', upload.single('file'), async (req, res) => {
         
-        console.log(req.file);  
-
         if(!req.file) {
            return res.status(404).send('Image not found!')
         }

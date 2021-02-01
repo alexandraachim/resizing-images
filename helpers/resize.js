@@ -2,9 +2,7 @@ const fs = require('fs');
 const crypto = require('crypto');
 const sharp = require('sharp');
 
-
-const date = new Date()
-
+const date = new Date();
 const resizingImage = async (width, file, tasks) => {
 
     const dirOutput = `${process.cwd()}/output`;
@@ -35,15 +33,27 @@ const resizingImage = async (width, file, tasks) => {
     const modifiedImage = await sharp(path)
         .resize(width)
         .toFile(`${dir}/${newName}.jpg`);
- 
+    
+
     const newId = Object.keys(tasks.images).length + 1;
+    let status;
+    const array = tasks.images
+    const task = array.filter(elem => elem.id === newId - 1)
+    if(task) {
+        status = 'completed'
+    } else {
+        status = 'pending'
+    }
+
     const info = {
         'id': newId,
         'newName': newName,
         'path': path,
         'date': date,
         'original': originalImage,
-        'modified': modifiedImage
+        'outputPath': dir,
+        'modified': modifiedImage,
+        'status': status
     };
      
     tasks.images = [...tasks.images, info]
