@@ -21,7 +21,7 @@ _
 
 _
 
-    npn run start:dev
+    npm run start:dev
 _
 
 Upload your first image:
