@@ -10,8 +10,6 @@ const storage = multer.diskStorage({
         cb(null, `./output`)
     },
     filename: function (req, file, cb) {
-        console.log({file});
-        let type = '';
         if (file.mimetype === "image/jpeg") {
             type = "jpg";
         }
