@@ -38,7 +38,7 @@ Get data:
 
 Get all tasks
     1. Open Postman:
-    2. GET to : http://localhost:3000/tasks
+    2. GET to : http://localhost:3000/
     Send Request.
 
 
