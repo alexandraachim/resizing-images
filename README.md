@@ -26,19 +26,19 @@ _
 
 Upload your first image:
     1. Open Postman:
-    2. POST to : http://localhost/3000/task
+    2. POST to : http://localhost:3000/task
     3. Chose body - form-data - file (file) and Select files
     Send Request.
 
 Get data:
     1. Open Postman:
-    2. GET to : http://localhost/3000/task/:id
+    2. GET to : http://localhost:3000/task/:id
     3. Make sure the id exists. (look it at tasks folder)
     Send Request.
 
 Get all tasks
     1. Open Postman:
-    2. GET to : http://localhost/3000/tasks
+    2. GET to : http://localhost:3000/tasks
     Send Request.
 
 
